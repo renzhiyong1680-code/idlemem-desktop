@@ -63,7 +63,7 @@ xiancun-tray.exe -config tray.json
 │  xiancun-tray（本仓库）                       │
 │   systray 菜单/图标 + 配置加载 + 生命周期装配   │
 ├─────────────────────────────────────────────┤
-│  idlemem-core（replace 到本地）              │
+│  idlemem-core v0.1.0（模块依赖）             │
 │   agent（整合入口）+ kvsrv（RESP 端口）        │
 │   + governor（手动暂停开关）+ heartbeat       │
 └─────────────────────────────────────────────┘
@@ -72,9 +72,9 @@ xiancun-tray.exe -config tray.json
 ## 开发
 
 ```bash
-git clone git@github.com:renzhiyong1680-code/idlemem-desktop.git
-# 与 idlemem-core 同级目录，go.mod 已 replace 到 ../idlemem-core
-go mod tidy
+git clone https://github.com/renzhiyong1680-code/idlemem-desktop.git
+cd idlemem-desktop
+# 核心库按版本号自动拉取（idlemem-core v0.1.0），无需同级目录
 go vet ./...
 ```
 

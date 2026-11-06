@@ -4,7 +4,7 @@ go 1.27
 
 require (
 	github.com/getlantern/systray v1.2.2
-	github.com/renzhiyong1680-code/idlemem-core v0.0.0
+	github.com/renzhiyong1680-code/idlemem-core v0.1.0
 )
 
 require (
@@ -18,5 +18,3 @@ require (
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
 	golang.org/x/sys v0.1.0 // indirect
 )
-
-replace github.com/renzhiyong1680-code/idlemem-core => ../idlemem-core

@@ -3,6 +3,7 @@ name: ci
 # 桌面外壳用 systray，必须开 CGO，因此只能在带图形工具链的真实系统上构建：
 # Windows 用 runner 自带的 MinGW，macOS 用系统 clang。两个平台各建一次，
 # 顺便守住"核心库不含平台相关代码"这条约束（Linux 由 idlemem-core 的 CI 覆盖）。
+# 核心库按版本号从模块代理拉取，无需同时检出 idlemem-core。
 on:
   push:
     branches: [master, main]
@@ -13,12 +14,6 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - name: Check out the core library next to this repo
-        uses: actions/checkout@v4
-        with:
-          repository: renzhiyong1680-code/idlemem-core
-          path: src/idlemem-core
-
       - name: Check out this repo
         uses: actions/checkout@v4
         with:
@@ -53,12 +48,6 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - name: Check out the core library next to this repo
-        uses: actions/checkout@v4
-        with:
-          repository: renzhiyong1680-code/idlemem-core
-          path: src/idlemem-core
-
       - name: Check out this repo
         uses: actions/checkout@v4
         with:
