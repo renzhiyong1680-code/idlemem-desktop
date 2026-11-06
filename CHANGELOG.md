@@ -9,6 +9,8 @@
 - `CLA.md`：贡献者许可协议（中英双语十节），贡献者保留著作权，仅授予项目方在开源与商业授权两种模式下的使用许可
 - `CONTRIBUTING.md`、`SECURITY.md`、`.github/ISSUE_TEMPLATE/`：贡献流程、漏洞报告通道与 Issue 模板
 - README 顶部增加三仓导航、项目介绍入口与 Release 直链
+- README 新增「下载后怎么打开」：说明 `v0.1.1` 二进制未做代码签名，给出 macOS（`xattr -d com.apple.quarantine` / 右键打开 / 隐私与安全性放行）与 Windows（SmartScreen「仍要运行」）的处理步骤
+- `docs/assets/architecture.svg`：三仓协作架构图，README 新增「三仓如何协作」段并引用该图
 
 ### 变更
 

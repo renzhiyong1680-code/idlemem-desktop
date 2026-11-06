@@ -8,6 +8,31 @@
 
 > 只想立刻贡献内存：下载 [v0.1.1 的托盘程序](https://github.com/renzhiyong1680-code/idlemem-desktop/releases/tag/v0.1.1)，运行后连上控制面即可，无需编译。
 
+## 下载后怎么打开（会被系统拦一次，属正常）
+
+`v0.1.1` 的托盘程序**没有做代码签名**，所以首次运行系统会拦。拦的是"发布者未验证"，不是程序有问题。
+
+**macOS**：把下载的 `xiancun-tray` 放进任意目录，然后
+
+```bash
+chmod +x ./xiancun-tray
+xattr -d com.apple.quarantine ./xiancun-tray
+./xiancun-tray
+```
+
+也可以在 Finder 里按住 `Control` 点图标 → 打开 → 弹窗里再点「打开」。若仍提示"无法验证开发者"，去**系统设置 → 隐私与安全性**，底部会有一条拦截记录，点「仍要打开」。
+
+**Windows**：双击 `xiancun-tray.exe`，SmartScreen 弹「Windows 已保护你的电脑」时点「更多信息」→「仍要运行」。
+
+想彻底消除拦截只能买证书：macOS 需要 Apple Developer 账号（99 美元/年）做 `codesign` + `notarize`，Windows 需要 OV/EV 代码签名证书。当前版本没做，是成本取舍，不影响功能。
+
+## 三仓如何协作
+
+![闲存云三仓架构](docs/assets/architecture.svg)
+
+本仓库提供的是最后一公里：把 `idlemem-core` 的 agent 与 kvsrv 装配成常驻托盘进程，让普通用户不用命令行就能成为上面图里的一个 Agent 节点。
+
+
 ## 功能
 
 - **状态一瞥**：托盘菜单实时显示贡献状态（在线/暂停）、贡献容量、KV 占用、key 数、KV 端口与控制面地址；
@@ -67,7 +92,7 @@ xiancun-tray.exe -config tray.json
 │  xiancun-tray（本仓库）                       │
 │   systray 菜单/图标 + 配置加载 + 生命周期装配   │
 ├─────────────────────────────────────────────┤
-│  idlemem-core v0.1.0（模块依赖）             │
+│  idlemem-core v0.1.1（模块依赖）             │
 │   agent（整合入口）+ kvsrv（RESP 端口）        │
 │   + governor（手动暂停开关）+ heartbeat       │
 └─────────────────────────────────────────────┘
