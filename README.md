@@ -77,3 +77,11 @@ git clone git@github.com:renzhiyong1680-code/idlemem-desktop.git
 go mod tidy
 go vet ./...
 ```
+
+## 许可证
+
+[MIT](LICENSE)
+
+---
+
+**闲存云 · 把闲置的内存变成可收益的资源**
