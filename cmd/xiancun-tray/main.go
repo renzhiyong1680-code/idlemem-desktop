@@ -41,6 +41,9 @@ import (
 //go:embed assets/icon.png
 var iconData []byte
 
+// version 由构建时注入（-ldflags "-X main.version=v0.1.0"），用于运维核对节点上跑的是哪一版。
+var version = "dev"
+
 // config 与 cmd/xiancun-agent 保持一致的运行配置。
 type config struct {
 	Server     string        `json:"server"`
@@ -89,8 +92,14 @@ func main() {
 		kvAddr   = flag.String("kv", "", "KV service listen address, e.g. :16380")
 		nodeID   = flag.String("id", "", "node id (default: auto-generated stable id)")
 		interval = flag.Duration("interval", 0, "heartbeat interval (default 10s)")
+		showVersion = flag.Bool("version", false, "print the version and exit")
 	)
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Println("xiancun-tray " + version)
+		return
+	}
 
 	cfg := config{}
 	if *cfgPath != "" {
@@ -159,7 +168,7 @@ func (a *trayApp) onReady() {
 	// 托盘 UI。
 	systray.SetIcon(iconData)
 	systray.SetTitle("闲存云 Agent")
-	systray.SetTooltip("闲存云 Agent - 闲置内存贡献节点")
+	systray.SetTooltip("闲存云 Agent " + version + " - 闲置内存贡献节点")
 
 	a.statusItem = systray.AddMenuItem("状态：启动中", "当前贡献状态")
 	a.statusItem.Disable()
