@@ -103,7 +103,7 @@ xiancun-tray.exe -config tray.json
 ```bash
 git clone https://github.com/renzhiyong1680-code/idlemem-desktop.git
 cd idlemem-desktop
-# 核心库按版本号自动拉取（idlemem-core v0.1.0），无需同级目录
+# 核心库按版本号自动拉取（idlemem-core v0.1.1），无需同级目录
 go vet ./...
 ```
 
