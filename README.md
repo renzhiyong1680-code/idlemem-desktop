@@ -2,7 +2,7 @@
 
 闲存云 Agent 的**桌面外壳**仓库：Windows 系统托盘 + macOS 菜单栏应用。
 
-它把 [idlemem-core](https://github.com/xiancuncloud/idlemem-core) 核心库装配成一个常驻托盘进程，节点主人无需命令行即可管理自己的"闲置内存贡献节点"。
+它把 [idlemem-core](https://github.com/renzhiyong1680-code/idlemem-core) 核心库装配成一个常驻托盘进程，节点主人无需命令行即可管理自己的"闲置内存贡献节点"。
 
 ## 功能
 
@@ -72,7 +72,7 @@ xiancun-tray.exe -config tray.json
 ## 开发
 
 ```bash
-git clone git@github.com:xiancuncloud/idlemem-desktop.git
+git clone git@github.com:renzhiyong1680-code/idlemem-desktop.git
 # 与 idlemem-core 同级目录，go.mod 已 replace 到 ../idlemem-core
 go mod tidy
 go vet ./...

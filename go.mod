@@ -1,10 +1,10 @@
-module github.com/xiancuncloud/idlemem-desktop
+module github.com/renzhiyong1680-code/idlemem-desktop
 
 go 1.27
 
 require (
 	github.com/getlantern/systray v1.2.2
-	github.com/xiancuncloud/idlemem-core v0.0.0
+	github.com/renzhiyong1680-code/idlemem-core v0.0.0
 )
 
 require (
@@ -19,4 +19,4 @@ require (
 	golang.org/x/sys v0.1.0 // indirect
 )
 
-replace github.com/xiancuncloud/idlemem-core => ../idlemem-core
+replace github.com/renzhiyong1680-code/idlemem-core => ../idlemem-core

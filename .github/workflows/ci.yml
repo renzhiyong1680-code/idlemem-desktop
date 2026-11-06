@@ -16,7 +16,7 @@ jobs:
       - name: Check out the core library next to this repo
         uses: actions/checkout@v4
         with:
-          repository: xiancuncloud/idlemem-core
+          repository: renzhiyong1680-code/idlemem-core
           path: src/idlemem-core
 
       - name: Check out this repo
@@ -56,7 +56,7 @@ jobs:
       - name: Check out the core library next to this repo
         uses: actions/checkout@v4
         with:
-          repository: xiancuncloud/idlemem-core
+          repository: renzhiyong1680-code/idlemem-core
           path: src/idlemem-core
 
       - name: Check out this repo
