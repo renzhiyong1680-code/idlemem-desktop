@@ -4,7 +4,7 @@ go 1.27
 
 require (
 	github.com/getlantern/systray v1.2.2
-	github.com/renzhiyong1680-code/idlemem-core v0.1.0
+	github.com/renzhiyong1680-code/idlemem-core v0.1.1
 )
 
 require (
