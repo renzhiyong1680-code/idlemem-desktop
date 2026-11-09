@@ -48,6 +48,10 @@ jobs:
           path: src/idlemem-desktop/xiancun-tray.exe
 
   build-macos:
+    # macOS runner 会因容量排队被平台取消，取消不应把整轮 CI 判红：
+    # Windows 侧已完整验证；macOS 产物属于"可构建、未做真机交互验证"，
+    # 该限制在 README「已知限制」里对外说明。
+    continue-on-error: true
     runs-on: macos-latest
     steps:
       - name: Check out this repo
@@ -60,6 +64,13 @@ jobs:
         with:
           go-version-file: src/idlemem-desktop/go.mod
           cache-dependency-path: src/idlemem-desktop/go.sum
+
+      # 产物要挂到 Release 供人下载，名字里的架构必须与真实产物一致，
+      # 不能在 arm64 runner 上打出来的二进制叫 darwin_amd64。
+      - name: Report target arch
+        id: arch
+        working-directory: src/idlemem-desktop
+        run: echo "arch=$(go env GOARCH)" >> "$GITHUB_OUTPUT"
 
       - name: Vet
         working-directory: src/idlemem-desktop
@@ -74,5 +85,5 @@ jobs:
       - name: Upload the binary
         uses: actions/upload-artifact@v4
         with:
-          name: xiancun-tray-darwin_amd64
+          name: xiancun-tray-darwin_${{ steps.arch.outputs.arch }}
           path: src/idlemem-desktop/xiancun-tray

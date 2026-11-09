@@ -6,6 +6,7 @@
 
 ### 新增
 
+- README 新增「已知限制」：macOS 只做构建验证未做真机交互、macOS 产物架构以 CI 日志为准（构建机为 Apple Silicon，Intel Mac 需自行编译）、产物无代码签名、托盘不持久化状态
 - `CLA.md`：贡献者许可协议（中英双语十节），贡献者保留著作权，仅授予项目方在开源与商业授权两种模式下的使用许可
 - `CONTRIBUTING.md`、`SECURITY.md`、`.github/ISSUE_TEMPLATE/`：贡献流程、漏洞报告通道与 Issue 模板
 - README 顶部增加三仓导航、项目介绍入口与 Release 直链
@@ -14,7 +15,12 @@
 
 ### 变更
 
+- macOS 产物名由硬编码的 `xiancun-tray-darwin_amd64` 改为 `xiancun-tray-darwin_<arch>`，架构取自 `go env GOARCH`，避免在 arm64 构建机上产出叫 amd64 的二进制
 - 核心库依赖由 `idlemem-core v0.1.0` 升级为 `v0.1.1`（两版代码一致，仅许可证变更）
+
+### 修复
+
+- CI 的 `build-macos` job 在 GitHub 托管 macOS runner 排队超时被平台取消，会把整轮 CI 判成失败（同一次运行的 `build-windows` 十个步骤全部成功）。现在该 job 标记 `continue-on-error: true`，单独失败不再染红整轮
 
 ## [v0.1.1] - 2026-11-06
 

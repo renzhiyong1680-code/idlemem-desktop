@@ -98,6 +98,13 @@ xiancun-tray.exe -config tray.json
 └─────────────────────────────────────────────┘
 ```
 
+## 已知限制
+
+- **macOS 只做了构建验证，没有做真机交互验证**。菜单栏图标、暂停/恢复、状态刷新这些交互在真机上还没点过一遍，试用反馈请开 Issue。
+- **macOS 产物架构以 CI 日志为准**。构建机是 Apple Silicon（arm64），Release 上的 `xiancun-tray` 因此是 arm64 二进制；Intel Mac 需要在本机 `go build` 自行编译（`CGO_ENABLED=1`）。
+- **没有代码签名**，Windows 与 macOS 都会拦一次，处理方式见上文。
+- **不持久化**：托盘崩溃或重启，贡献节点上的缓存数据即失效，这是设计前提，不是缺陷。
+
 ## 开发
 
 ```bash
