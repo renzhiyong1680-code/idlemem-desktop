@@ -32,6 +32,8 @@ xattr -d com.apple.quarantine ./xiancun-tray
 
 本仓库提供的是最后一公里：把 `idlemem-core` 的 agent 与 kvsrv 装配成常驻托盘进程，让普通用户不用命令行就能成为上面图里的一个 Agent 节点。
 
+放到具体场景里：在 **AI 基站（AI-RAN）** 的边缘服务器上，装的就是这个托盘程序 —— 它把自己那部分闲置内存登记进池。落位图与四条边界见 core 仓的 [ai-ran-architecture.svg](https://github.com/renzhiyong1680-code/idlemem-core/blob/master/docs/assets/ai-ran-architecture.svg)。
+
 
 ## 功能
 
@@ -101,7 +103,7 @@ xiancun-tray.exe -config tray.json
 ## 已知限制
 
 - **macOS 只做了构建验证，没有做真机交互验证**。菜单栏图标、暂停/恢复、状态刷新这些交互在真机上还没点过一遍，试用反馈请开 Issue。
-- **macOS 产物架构以 CI 日志为准**。构建机是 Apple Silicon（arm64），Release 上的 `xiancun-tray` 因此是 arm64 二进制；Intel Mac 需要在本机 `go build` 自行编译（`CGO_ENABLED=1`）。
+- **macOS 产物只有 arm64**。Release 上的 `xiancun-tray` 实测产物是 `xiancun-tray-darwin_arm64`（CI 构建机为 Apple Silicon），Intel Mac 需要在本机 `go build` 自行编译（`CGO_ENABLED=1`）。
 - **没有代码签名**，Windows 与 macOS 都会拦一次，处理方式见上文。
 - **不持久化**：托盘崩溃或重启，贡献节点上的缓存数据即失效，这是设计前提，不是缺陷。
 
