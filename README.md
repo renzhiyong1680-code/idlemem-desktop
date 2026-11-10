@@ -6,11 +6,11 @@
 
 本仓库是三个仓库中的**供给方外壳**。另外两个：[idlemem-core](https://github.com/renzhiyong1680-code/idlemem-core)（贡献节点核心库）、[idlemem-server](https://github.com/renzhiyong1680-code/idlemem-server)（调度控制面）。项目定位、**明确不做什么**、能力边界与当前进度，见 [项目介绍](https://github.com/renzhiyong1680-code/idlemem-core/blob/master/docs/%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D.md)。
 
-> 只想立刻贡献内存：下载 [v0.1.1 的托盘程序](https://github.com/renzhiyong1680-code/idlemem-desktop/releases/tag/v0.1.1)，运行后连上控制面即可，无需编译。
+> 只想立刻贡献内存：下载 [v0.1.2 的托盘程序](https://github.com/renzhiyong1680-code/idlemem-desktop/releases/tag/v0.1.2)，运行后连上控制面即可，无需编译。
 
 ## 下载后怎么打开（会被系统拦一次，属正常）
 
-`v0.1.1` 的托盘程序**没有做代码签名**，所以首次运行系统会拦。拦的是"发布者未验证"，不是程序有问题。
+`v0.1.2` 的托盘程序**没有做代码签名**，所以首次运行系统会拦。拦的是"发布者未验证"，不是程序有问题。
 
 **macOS**：把下载的 `xiancun-tray` 放进任意目录，然后
 
